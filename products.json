@@ -1,0 +1,32 @@
+[
+  {
+    "id": "59c87471-e4d9-47ce-962c-b3bc8888cfa7",
+    "title": "Termo Stanley",
+    "description": "Termo Stanley 1LT",
+    "code": "MAT003",
+    "price": 100000,
+    "stock": 12,
+    "category": "bebidas",
+    "thumbnails": []
+  },
+  {
+    "id": "dd441bc4-339a-43e1-9476-02f6e143098f",
+    "title": "Mate premium",
+    "description": "Mate de porongo/calabaza",
+    "code": "MAT001",
+    "price": 40000,
+    "stock": 22,
+    "category": "accesorios",
+    "thumbnails": []
+  },
+  {
+    "id": "d2866d25-c2fc-4356-981e-97d682031cf3",
+    "title": "Bombilla Alcapa el Matero",
+    "description": "bombilla alpaca marca el matero",
+    "code": "MAT002",
+    "price": 8000,
+    "stock": 64,
+    "category": "accesorios",
+    "thumbnails": []
+  }
+]
