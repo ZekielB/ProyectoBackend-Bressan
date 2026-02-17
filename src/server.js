@@ -12,11 +12,9 @@ const productManager = new ProductManager();
 const cartManager = new CartManager();
 
 
-
-
 /* ================= PRODUCTOS ================= */
 
-// GET todos los productos
+// GET trae  todos los productos
 app.get("/api/products", async (req, res) => {
   try {
     const products = await productManager.getProducts();
@@ -26,7 +24,7 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-// GET producto por id
+// GET trae producto por id
 app.get("/api/products/:pid", async (req, res) => {
   try {
     const product = await productManager.getProductById(req.params.pid);
@@ -69,7 +67,7 @@ app.put("/api/products/:pid", async (req, res) => {
   }
 });
 
-/* ================= CARTS ================= */
+/* ================= CARRITO================= */
 
 // POST crear carrito
 app.post("/api/carts", async (req, res) => {
@@ -117,7 +115,7 @@ app.post("/api/carts/:cid/product/:pid", async (req, res) => {
 });
 
 
-// DELETE producto
+// DELETE borra producto de products no de carros
 app.delete("/api/products/:pid", async (req, res) => {
   try {
     const deleted = await productManager.deleteProduct(req.params.pid);
@@ -132,7 +130,7 @@ app.delete("/api/products/:pid", async (req, res) => {
   }
 });
 
-/* ================= SERVER ================= */
+/* ================= SERViDOR ================= */
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
