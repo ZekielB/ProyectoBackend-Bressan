@@ -1,0 +1,66 @@
+<h1>Productos en tiempo real</h1>
+
+<form id="productForm">
+  <input name="nombre" placeholder="Nombre">
+  <input name="precio" placeholder="Precio">
+  <button type="submit">Agregar</button>
+</form>
+
+<ul id="productList">
+{{#each products}}
+  <li>
+    {{this.nombre}} - ${{this.precio}}
+    <button onclick="deleteProduct({{this.id}})">Eliminar</button>
+  </li>
+{{/each}}
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+const socket = io()
+
+const form = document.getElementById("productForm")
+
+form.addEventListener("submit", async e => {
+
+  e.preventDefault()
+
+  const data = Object.fromEntries(new FormData(form))
+
+  await fetch("/api/products", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify(data)
+  })
+
+})
+
+socket.on("updateProducts", products => {
+
+  const list = document.getElementById("productList")
+
+  list.innerHTML = ""
+
+  products.forEach(p => {
+
+    const li = document.createElement("li")
+
+    li.innerText = p.nombre + " - $" + p.precio
+
+    list.appendChild(li)
+
+  })
+
+})
+
+async function deleteProduct(id){
+
+  await fetch(`/api/products/${id}`,{
+    method:"DELETE"
+  })
+
+}
+
+</script>
